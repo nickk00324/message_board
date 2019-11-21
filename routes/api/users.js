@@ -11,6 +11,18 @@ router.get('/', (req, res) => {
     res.json('this is the users route');
 })
 
+router.get('/:user_name', (req, res) => {
+    const { user_name } = req.params;
+    User.findOne({ name: user_name })
+    .then( user => {
+        if(!user){
+            res.status(404).json({err: 'user not found'});
+        } else {
+            res.json({name: user.name, id: user.id});
+        }
+    })
+})
+
 router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
 
