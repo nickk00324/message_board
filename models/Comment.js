@@ -14,14 +14,6 @@ const CommentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Post'
     },
-    likes: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    dislikes: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
     date: {
         type: String,
         default: Date.now

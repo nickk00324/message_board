@@ -10,22 +10,14 @@ const PostSchema = new Schema({
         type: String,
         required: true
     },
+    topic: {
+        type: Schema.Types.ObjectId,
+        required: true
+    },
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    likes: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    dislikes: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }],
-    comments: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Comment'
-    }],
     date: {
         type: String,
         default: Date.now
