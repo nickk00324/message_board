@@ -12,7 +12,7 @@ const PostSchema = new Schema({
     },
     topic: {
         type: Schema.Types.ObjectId,
-        required: true
+        ref: 'Topic'
     },
     author: {
         type: Schema.Types.ObjectId,

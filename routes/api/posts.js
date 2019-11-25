@@ -1,21 +1,31 @@
 const express = require('express');
 const router = express.Router();
 
+const Topic = require('../../models/Topic');
 const Post = require('../../models/Post');
 
 //get all posts
 router.get('/', (req, res) => {
     Post.find()
     .sort({date: -1 })
+    .populate('topic', 'name')
+    .populate('author', 'name')
     .then( posts => res.json(posts))
-    .catch( err => console.log(err))
+
 })
 
 //get all posts under a topic
-router.get('/:topic_id', (req,res) => {
-    const { topic_id } = req.params;
-    Post.findById(topic_id)
-    .then( posts => res.json(posts));
+router.get('/:topic', (req,res) => {
+    const { topic } = req.params;
+    Topic.findOne({ name: topic})
+    .then( topic => {
+        Post.find( {topic: topic.id})
+        .populate('topic', 'name')
+        .populate('author', 'name')
+        .then( posts => res.json(posts))
+        .catch( err => console.log(err))
+    })
+    .catch( err => console.log(err))
 })
 
 //add post to topic
@@ -33,9 +43,11 @@ router.post('/:topic_id', (req, res) => {
 })
 
 //get post by id
-router.get('/:id', (req, res) => {
+router.get('/id/:id', (req, res) => {
     const { id } = req.params;
     Post.findById(id)
+    .populate('topic', 'name')
+    .populate('author', 'name')
     .then( post => res.json(post))
 })
 

@@ -1,6 +1,7 @@
 import {
     RECEIVE_ALL_POSTS,
-    RECEIVE_ALL_TOPIC_POSTS
+    RECEIVE_ALL_TOPIC_POSTS,
+    RECEIVE_CURRENT_POST
 } from '../actions/post_actions';
 
 const initialState = {
@@ -18,6 +19,11 @@ const postReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: action.posts.data
+            }
+        case RECEIVE_CURRENT_POST:
+            return {
+                ...state,
+                post: action.post.data
             }
         default:
             return state;
