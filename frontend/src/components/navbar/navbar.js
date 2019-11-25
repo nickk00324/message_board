@@ -4,7 +4,10 @@ import Logo from '../logo/logo';
 
 const NavBar = props =>
   props.isLoggedIn ? (
-    <Logo />
+    <div className="nav-bar">
+      <Logo />
+      <Link to="/submit">create post</Link>
+    </div>
   ) : (
     <div className="nav-bar">
       <Logo />

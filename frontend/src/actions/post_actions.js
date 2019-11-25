@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 export const RECEIVE_ALL_TOPIC_POSTS = 'RECEIVE_ALL_TOPIC_POSTS';
 export const RECEIVE_CURRENT_POST = 'RECEIVE_CURRENT_POST';
+export const RECEIVE_USER_POSTS = 'RECEIVE_USER_POSTS';
 
 const receiveAllPosts = posts => ({
     type: RECEIVE_ALL_POSTS,
@@ -18,6 +18,11 @@ const receiveAllTopicPosts = posts => ({
 const receiveCurrentPost = post => ({
     type: RECEIVE_CURRENT_POST,
     post
+})
+
+const receiveUserPosts = posts => ({
+    type: RECEIVE_USER_POSTS,
+    posts
 })
 
 export const fetchAllPosts = () => dispatch => (
@@ -35,5 +40,11 @@ export const fetchAllTopicPosts = topic => dispatch => (
 export const fetchPostByID = post_id => dispatch => (
     axios.get(`/api/posts/id/${post_id}`)
     .then( post => dispatch(receiveCurrentPost(post)))
+    .catch( err => console.log(err))
+)
+
+export const fetchPostsByUserID = user_id => dispatch => (
+    axios.get(`/api/${user_id}/posts`)
+    .then( posts => dispatch(receiveUserPosts(posts)))
     .catch( err => console.log(err))
 )
