@@ -7,6 +7,9 @@ const keys = require('../../config/keys');
 const validateLoginInput = require('../../validations/login');
 const validateRegisterInput = require('../../validations/register');
 
+const Comment = require('../../models/Comment');
+const Post = require('../../models/Post');
+
 router.get('/', (req, res) => {
     res.json('this is the users route');
 })
@@ -99,5 +102,23 @@ router.post('/register', (req,res) => {
         }
     })
 });
+
+//get all user comments
+router.get('/:user_id/comments', (req, res) => {
+    const { user_id } = req.params;
+    Comment.find({ author: user_id })
+    .populate('topic', 'name')
+    .then( comments => res.json(comments))
+    .catch( err => console.log(err))
+})
+
+//get all user posts
+router.get('/:user_id/posts', (req, res) => {
+    const { user_id } = req.params;
+    Post.find({ author: user_id})
+    .populate('topic', 'name')
+    .then( post => res.json(post))
+    .catch( err => console.log(err))
+})
 
 module.exports = router;

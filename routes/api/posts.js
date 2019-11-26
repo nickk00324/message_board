@@ -29,9 +29,8 @@ router.get('/:topic', (req,res) => {
 })
 
 //add post to topic
-router.post('/:topic_id', (req, res) => {
-    const { topic_id } = req.params;
-    const { title, body, author } = req.body;
+router.post('/', (req, res) => {
+    const { title, body, author, topic_id } = req.body;
     const newPost = new Post({
         title,
         body,
