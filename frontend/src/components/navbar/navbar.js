@@ -7,6 +7,8 @@ const NavBar = props =>
     <div className="nav-bar">
       <Logo />
       <Link to="/submit">create post</Link>
+      <button onClick={props.logout}>logout</button>
+      <Link to={`/user/${props.user.name}`}>{props.user.name}</Link>
     </div>
   ) : (
     <div className="nav-bar">

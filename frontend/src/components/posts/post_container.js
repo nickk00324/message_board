@@ -5,7 +5,8 @@ import { fetchPostByID } from '../../actions/post_actions';
 const mapStateToProps = (state, ownProps) => ({
     topic: state.topic.topic,
     post_id: ownProps.match.params.post_id,
-    currentPost: state.post.post
+    currentPost: state.post.post,
+    loggedIn: state.session.isAuthenticated
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -4,7 +4,8 @@ import {
 } from '../actions/topic_actions';
 
 const initialState = {
-    topics: [],
+    //for useEffect later on
+    topics: [{name: null}],
     currentTopic: undefined
 }
 

@@ -1,6 +1,7 @@
 import {
     RECEIVE_COMMENTS_FOR_POST, 
-    RECEIVE_USER_COMMENTS
+    RECEIVE_USER_COMMENTS,
+    RECEIVE_NEW_COMMENT
 } from '../actions/comment_actions';
 
 const initialState = {
@@ -18,6 +19,11 @@ const commentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 comments: action.comments.data
+            }
+        case RECEIVE_NEW_COMMENT:
+            return {
+                ...state,
+                new: action.comment.data
             }
         default:
             return state;

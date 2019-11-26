@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import CommentCard from './comment_card';
+
 
 const CommentList = props => {
     const [comments, setComments] = useState([]);
@@ -25,9 +26,8 @@ const CommentList = props => {
         }
     }
 
-    return (
-        renderComments()
-    )
+    return renderComments();
+        
 }
 
 export default CommentList;
