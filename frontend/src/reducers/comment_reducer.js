@@ -5,7 +5,8 @@ import {
 } from '../actions/comment_actions';
 
 const initialState = {
-    comments: []
+    comments: [],
+    dataFetched: false
 }
 
 const commentReducer = (state = initialState, action) => {
@@ -13,7 +14,8 @@ const commentReducer = (state = initialState, action) => {
         case RECEIVE_COMMENTS_FOR_POST:
             return {
                 ...state,
-                comments: action.comments.data
+                comments: action.comments.data,
+                dataFetched: true
             }
         case RECEIVE_USER_COMMENTS:
             return {

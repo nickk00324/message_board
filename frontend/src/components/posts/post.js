@@ -35,7 +35,7 @@ const Post = props => {
                 </p>
                 {props.loggedIn ? <CreateCommentContainer post_id={post._id}/> : null }
                 <h2>comments:</h2>
-                <CommentListContainer post_id={post._id} />
+                <CommentListContainer post_id={post._id}/>
               </div>
             );
         } else {

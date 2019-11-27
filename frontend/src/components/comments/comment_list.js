@@ -1,18 +1,20 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import CommentCard from './comment_card';
+import { isEqual } from 'lodash';
+
 
 
 const CommentList = props => {
+
     const [comments, setComments] = useState([]);
-    const [shouldGetComments, setShouldGetComments] = useState(true);
+    const [currentPost, setCurrentPost] = useState('');
 
     useEffect( () => {
-        if(shouldGetComments){
-            props.fetchCommentsByPostID(props.post_id);
-            setShouldGetComments(false);
-        }
+        props.fetchCommentsByPostID(props.post_id);
         setComments(props.comments);
-    }, [ [], shouldGetComments])
+    }, [ props.dataFetched ])
+
+
 
     const renderComments = () => {
         if(comments.length === 0){
