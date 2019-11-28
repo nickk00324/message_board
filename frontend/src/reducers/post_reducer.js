@@ -3,7 +3,8 @@ import {
     RECEIVE_ALL_TOPIC_POSTS,
     RECEIVE_CURRENT_POST,
     RECEIVE_USER_POSTS,
-    RECEIVE_NEW_POST
+    RECEIVE_NEW_POST,
+    RECEIVE_REFRESH_POSTS
 } from '../actions/post_actions';
 
 const initialState = {
@@ -42,6 +43,11 @@ const postReducer = (state = initialState, action) => {
                 ...state,
                 new: action.post.data,
                 dataFetched: true
+            }
+        case RECEIVE_REFRESH_POSTS:
+            return {
+                ...state,
+                dataFetched: false
             }
         default:
             return state;
