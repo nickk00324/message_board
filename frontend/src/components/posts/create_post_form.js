@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../styles/forms.css';
 
 const CreatePostForm = props => {
     const [title, setTitle] = useState('');

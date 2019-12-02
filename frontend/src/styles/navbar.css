@@ -1,0 +1,19 @@
+.nav-bar {
+    background-color: #2e2e2e;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-bar h2 {
+    margin: 0;
+    padding: 20px;
+}
+
+.nav-bar-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar-links a {
+    margin: 0 20px;
+}

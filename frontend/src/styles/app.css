@@ -1,0 +1,29 @@
+ul {
+    list-style: none;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #fd9d5c;
+}
+
+textarea {
+    resize: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Solway";
+    background-color: #181818;
+    color: #fd9d5c;
+}
+
+button {
+    border: none;
+    background-color: #75b1ff;
+    cursor: pointer;
+    font-family: 'Solway';
+    font-size: 16px;
+}

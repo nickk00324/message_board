@@ -1,0 +1,29 @@
+.form {
+    display: flex;
+    width: 10%;
+    margin: 0 auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+
+.form input {
+    background-color: transparent;
+    border: 2px solid #fd9d5c;
+    flex-basis: 100%;
+    height: 30px;
+    padding: 5px;
+    color: #fd9d5c;
+    font-size: 14px;
+    margin: 3px 0;
+}
+
+.form input::placeholder{
+    color: #64f3fd;
+}
+
+.form button {
+    width: 100%;
+    margin-top: 10px;
+    height: 30px;
+}

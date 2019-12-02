@@ -8,6 +8,7 @@ import PostContainer from '../components/posts/post_container';
 import CreatePostContainer from '../components/posts/create_post_container';
 import ProfileContainer from '../components/profile/profile_container';
 import { ProtectedRoute } from '../util/route_util';
+import '../styles/app.css';
 
 const App = () => (
   <Fragment>
