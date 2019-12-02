@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { refresh } from 'react-router-dom';
 
 const CreateComment = props => {
     const [input, setInput] = useState('');
@@ -10,6 +11,8 @@ const CreateComment = props => {
             post: props.post_id
         }
         props.createComment(newComment);
+        setInput('');
+        window.location.reload();
     }
 
 

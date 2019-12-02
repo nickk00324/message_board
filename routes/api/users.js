@@ -104,21 +104,29 @@ router.post('/register', (req,res) => {
 });
 
 //get all user comments
-router.get('/:user_id/comments', (req, res) => {
-    const { user_id } = req.params;
-    Comment.find({ author: user_id })
-    .populate('topic', 'name')
-    .then( comments => res.json(comments))
-    .catch( err => console.log(err))
+router.get('/:user/comments', (req, res) => {
+    const { user } = req.params;
+    User.findOne({ name: user})
+    .then( user => {
+        Comment.find({ author: user._id })
+          .populate("topic", "name")
+          .then(comments => res.json(comments))
+          .catch(err => console.log(err));
+    })
+    
 })
 
 //get all user posts
-router.get('/:user_id/posts', (req, res) => {
-    const { user_id } = req.params;
-    Post.find({ author: user_id})
-    .populate('topic', 'name')
-    .then( post => res.json(post))
-    .catch( err => console.log(err))
+router.get('/:user/posts', (req, res) => {
+    const { user } = req.params;
+    User.findOne({ name: user })
+    .then( user => {
+        Post.find({ author: user._id })
+          .populate("topic", "name")
+          .then(post => res.json(post))
+          .catch(err => console.log(err));
+    })
+    
 })
 
 module.exports = router;

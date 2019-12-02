@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
+
 const Profile = props => {
-    const [user, setUser] = useState(undefined);
-    const [comments, setComments] = useState([]);
-    const [posts, setPosts] = useState([]);
-
-    useEffect( () => {
-        props.fetchUser(props.user)
-        if(props.viewUser.id){
-            props.fetchCommentsByUserID(props.viewUser.id);
-            props.fetchPostsByUserID(props.viewUser.id);
-            setUser(props.viewUser);
-            setComments(props.comments);
-            setPosts(props.posts);
-        }
-    }, [ props.viewUser.id ])
-
     
+    useEffect( () => {
+        props.fetchCommentsByUserID(props.user);
+        props.fetchPostsByUserID(props.user);
+    }, [props.user])
+
+    const renderUser = () => {
+        const userComments = props.comments.map( comment => (
+            <li key={comment._id}>
+                {comment.text}
+            </li>
+        ))
+        const userPosts = props.posts.map( post => (
+            <li key={post._id}>
+                {post.title}
+            </li>
+        ))
+        return [...userComments, userPosts]
+    }
 
     return (
-        <h1>this will be the user profile</h1>
+        <ul>
+           {renderUser()}
+        </ul>
     )
 }
 
